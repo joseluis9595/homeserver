@@ -1,0 +1,8 @@
+# Ansible
+secrets.yml
+.vault_pass
+hosts
+!hosts.example
+
+# IDE specific
+.idea

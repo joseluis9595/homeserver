@@ -1,0 +1,2 @@
+[YOUR_HOSTNAME]
+YOUR_HOSTNAME ansible_host=IP_ADDRESS ansible_user=YOUR_USER ansible_connection=ssh ansible_password=YOUR_PASSWD ansible_port=YOUR_PORT

@@ -1,0 +1,31 @@
+- name: Home server | Pre tasks
+  hosts: homeserver
+  gather_facts: no
+  pre_tasks:
+    - include_tasks: tasks/change_ssh_port.yml
+      tags: port
+
+- name: Home server | Tasks
+  hosts: homeserver
+  roles:
+    #
+    # Dependencies
+    - role: deps/docker
+      tags:
+        - deps
+        - docker
+
+    #
+    # System
+    - role: system/duckdns
+      tags:
+        - system
+        - duckdns
+
+    #
+    # Services & containers
+    - role: containers/system/bunkerized-nginx
+      become: no
+      tags:
+        - containers
+        - bunkerized-nginx

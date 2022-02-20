@@ -1,0 +1,40 @@
+---
+- name: Docker | Download docker convenience script
+  shell: curl -fsSL https://get.docker.com -o get-docker.sh
+  args:
+    creates: get-docker.sh
+
+- name: Docker | Execute docker convenience script
+  shell: sh ./get-docker.sh
+  args:
+    creates: /usr/bin/docker
+
+- name: Docker | Cleanup docker convenience script
+  file:
+    state: absent
+    path: ./get-docker.sh
+
+- name: Docker | Make {{ ansible_user }} execute docker commands
+  shell: usermod -aG docker {{ ansible_user }}
+  become: true
+
+- name: Docker | Restart ssh connection to allow user changes to affect ansible user
+  meta:
+    reset_connection
+
+- name: Docker | Install dependencies
+  package:
+    name:
+      - libffi-dev
+      - libssl-dev
+      - python3-dev
+      - python3
+      - python3-pip
+    state: latest
+  become: true
+
+- name: Docker | Install docker-compose
+  shell: pip3 -v install docker-compose
+  args:
+    creates: /usr/local/bin/docker-compose
+  become: true
