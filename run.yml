@@ -10,9 +10,9 @@
   roles:
     #
     # Dependencies
-    - role: deps/docker
+    - role: dependencies/docker
       tags:
-        - deps
+        - dependencies
         - docker
 
     #
@@ -22,10 +22,21 @@
         - system
         - duckdns
 
+    - role: system/swag
+      tags:
+        - system
+        - containers
+        - swag
+
     #
-    # Services & containers
-    - role: containers/system/bunkerized-nginx
-      become: no
+    # Services
+    - role: services/homer
       tags:
         - containers
-        - bunkerized-nginx
+        - homer
+
+    - role: services/homeautomation/homeassistant
+      tags:
+        - containers
+        - homeautomation
+        - homeassistant

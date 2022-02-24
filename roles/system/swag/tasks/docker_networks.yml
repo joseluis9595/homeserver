@@ -1,0 +1,5 @@
+---
+- name: Create an internal vlan network for SWAG
+  docker_network:
+    name: swag_internal_vlan
+    state: present

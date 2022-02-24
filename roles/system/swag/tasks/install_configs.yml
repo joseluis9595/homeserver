@@ -1,0 +1,25 @@
+---
+- name: Create the proxy-conf folders
+  become: true
+  file:
+    path: "{{ DOCKER_DATA_DIR }}/swag/nginx/proxy-confs/"
+    state: directory
+    recurse: yes
+#    owner: "{{ USERNAME }}"
+#    group: "{{ USERNAME }}"
+#    mode: 0755
+
+- name: Install the SWAG config files
+  become: true
+  copy:
+    src: "{{ item }}"
+    dest: "{{ DOCKER_DATA_DIR }}/swag/nginx/proxy-confs/{{ item | basename | regex_replace('.j2$', '') }}"
+#    owner: "{{ USERNAME }}"
+#    group: "{{ USERNAME }}"
+#    mode: 0644
+  with_fileglob:
+    - templates/services/*.conf
+  notify:
+    - restart swag
+    - test nginx
+  register: swag_config
