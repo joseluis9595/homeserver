@@ -1,0 +1,8 @@
+- name: ARGON ONE | Download argon1 config script
+  get_url:
+    url: https://download.argon40.com/argon1.sh
+    dest: /tmp/argon1.sh
+    mode: 0755
+
+- name: ARGON ONE | Execute argon1 setup script
+  shell: /tmp/argon1.sh

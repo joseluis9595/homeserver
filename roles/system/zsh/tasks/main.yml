@@ -1,0 +1,28 @@
+- name: Install ZSH
+  package:
+    name:
+      - zsh
+      - git
+    state: latest
+  become: true
+
+- name: Change user shell to zsh
+  user:
+    name: "{{ ansible_user }}"
+    shell: /bin/zsh
+  become: true
+
+- name: Cloning oh-my-zsh
+  git:
+    repo=https://github.com/robbyrussell/oh-my-zsh
+    dest=~/.oh-my-zsh
+
+- name: Cloning zsh-autosuggestions
+  git:
+    repo=https://github.com/zsh-users/zsh-autosuggestions
+    dest=~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+
+- name: Copy zsh configuration to host
+  copy:
+    src: files/.zshrc
+    dest: ~/.zshrc

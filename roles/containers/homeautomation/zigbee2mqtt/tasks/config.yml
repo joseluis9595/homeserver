@@ -1,0 +1,17 @@
+- name: "Create {{ container_name }} folder if not created"
+  file:
+    path: "{{ DOCKER_DATA_DIR }}/{{ container_name }}/config"
+    state: directory
+    recurse: yes
+    owner: "{{ USERNAME }}"
+    group: "{{ USERNAME }}"
+    mode: 0755
+  become: true
+
+- name: Copy docker containers configuration files
+  copy:
+    src: "{{ item }}"
+    dest: "{{ DOCKER_DATA_DIR }}/{{ container_name }}"
+  become: true
+  with_items:
+    - files/configuration.yaml

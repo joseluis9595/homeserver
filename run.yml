@@ -17,6 +17,11 @@
 
     #
     # System
+    - role: system/argoncase
+      tags:
+        - system
+        - argoncase
+
     - role: system/duckdns
       tags:
         - system
@@ -28,15 +33,27 @@
         - containers
         - swag
 
+    - role: system/zsh
+      tags:
+        - system
+        - zsh
+
     #
     # Services
-    - role: services/homer
-      tags:
-        - containers
-        - homer
-
-    - role: services/homeautomation/homeassistant
+    - role: containers/homeautomation/homeassistant
       tags:
         - containers
         - homeautomation
         - homeassistant
+
+    - role: containers/homeautomation/mosquitto
+      tags:
+        - containers
+        - homeautomation
+        - mosquitto
+
+    - role: containers/homeautomation/zigbee2mqtt
+      tags:
+        - containers
+        - homeautomation
+        - zigbee2mqtt

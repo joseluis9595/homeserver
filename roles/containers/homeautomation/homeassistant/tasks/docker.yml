@@ -2,12 +2,12 @@
   docker_container:
     name: "{{ container_name }}"
     image: "homeassistant/home-assistant:stable"
-    networks:
-      - name: swag_internal_vlan
+    network_mode: host
     pull: yes
     state: 'started'
     env:
       "TZ": "{{ TZ }}"
     volumes:
       - "{{ DOCKER_DATA_DIR }}/{{ container_name }}/config:/config"
+      - /etc/localtime:/etc/localtime:ro
     restart_policy: unless-stopped

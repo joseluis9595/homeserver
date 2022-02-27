@@ -1,0 +1,58 @@
+- name: Make sure the {{ container_name }} container is created and running
+  docker_container:
+    name: "{{ container_name }}"
+    image: "koenkk/zigbee2mqtt"
+    pull: yes
+    network_mode: host
+    state: 'started'
+    restart_policy: unless-stopped
+    privileged: true
+    volumes:
+      - "{{ DOCKER_DATA_DIR }}/{{ container_name }}:/app/data"
+      - /run/udev:/run/udev:ro
+    devices:
+      - /dev/ttyUSB0:/dev/ttyUSB0
+    env:
+      "TZ": "{{ TZ }}"
+      "ZIGBEE2MQTT_CONFIG_MQTT_USER": "{{ ZIGBEE2MQTT_CONFIG_USER }}"
+      "ZIGBEE2MQTT_CONFIG_MQTT_PASSWORD": "{{ ZIGBEE2MQTT_CONFIG_PASSWORD }}"
+
+- name: Make sure the {{ container_name }} container is created and running
+  docker_container:
+    name: "{{ container_name }}"
+    image: "koenkk/zigbee2mqtt"
+    volumes:
+      -
+#    name: "{{ container_name }}"
+#    image: "koenkk/zigbee2mqtt"
+#    pull: yes
+#    network_mode: host
+#    state: 'started'
+#    restart_policy: unless-stopped
+#    privileged: true
+#    volumes:
+#      - "{{ DOCKER_DATA_DIR }}/{{ container_name }}:/app/data"
+#      - /run/udev:/run/udev:ro
+#    devices:
+#      - /dev/ttyUSB0:/dev/ttyUSB0
+#    env:
+#      "TZ": "{{ TZ }}"
+#      "ZIGBEE2MQTT_CONFIG_MQTT_USER": "{{ ZIGBEE2MQTT_CONFIG_USER }}"
+#      "ZIGBEE2MQTT_CONFIG_MQTT_PASSWORD": "{{ ZIGBEE2MQTT_CONFIG_PASSWORD }}"
+
+
+#  zigbee2mqtt:
+#    container_name: zigbee2mqtt
+#    image: koenkk/zigbee2mqtt
+#    volumes:
+#      - "{{ DOCKER_DATA_FOLDER }}/zigbee2mqtt:/app/data"
+#      - /run/udev:/run/udev:ro
+#    devices:
+#      - /dev/ttyUSB0:/dev/ttyUSB0
+#    restart: always
+#    network_mode: host
+#    privileged: true
+#    environment:
+#      - TZ={{ TZ }}
+#      - "ZIGBEE2MQTT_CONFIG_MQTT_USER={{ VAULT_ZIGBEE2MQTT_CONFIG_USER }}"
+#      - "ZIGBEE2MQTT_CONFIG_MQTT_PASSWORD={{ VAULT_ZIGBEE2MQTT_CONFIG_PASSWORD }}"

@@ -6,3 +6,6 @@ hosts
 
 # IDE specific
 .idea
+
+# TODO create those files from templates using secrets.yml
+*.passwd
