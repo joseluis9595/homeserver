@@ -16,6 +16,13 @@
         - docker
 
     #
+    # Security
+    - role: security/ssh
+      tags:
+        - security
+        - ssh
+
+    #
     # System
     - role: system/argoncase
       tags:

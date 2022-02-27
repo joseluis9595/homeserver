@@ -7,4 +7,20 @@ Ansible project to deploy and configure my local homeserver, with dockerized ser
 - https://www.youtube.com/watch?v=Mq5zBTpGNlE&t=262s
 
 ## TODO
-- Argon one m.2 download fan control (`curl https://download.argon40.com/argon1.sh | bash`)
+
+- Proxy for local connections
+- Proxy for remote connections
+- VPN
+- User configuration
+- Static IP address
+- Data backup
+
+- Containers
+    - Plex
+    - Vaultwarden
+    - Grafana + influxdb
+    - loki?
+
+- Home assistant
+    - Grafana integration
+    - 3d floorplan
