@@ -34,11 +34,23 @@
         - system
         - duckdns
 
-    - role: system/swag
-      tags:
-        - system
-        - containers
-        - swag
+#    - role: system/nginx
+#      tags:
+#        - system
+#        - containers
+#        - nginx
+#
+#    - role: system/swag
+#      tags:
+#        - system
+#        - containers
+#        - swag
+#
+#    - role: system/traefik
+#      tags:
+#        - system
+#        - containers
+#        - traefik
 
     - role: system/zsh
       tags:
@@ -46,7 +58,7 @@
         - zsh
 
     #
-    # Services
+    # Services - Home automation
     - role: containers/homeautomation/homeassistant
       tags:
         - containers
@@ -58,9 +70,25 @@
         - containers
         - homeautomation
         - mosquitto
+    # TODO potentially broken
+    #    - role: containers/homeautomation/zigbee2mqtt
+    #      tags:
+    #        - containers
+    #        - homeautomation
+    #        - zigbee2mqtt
 
-    - role: containers/homeautomation/zigbee2mqtt
+    #
+    # Services - Management
+#    - role: containers/management/homer
+#      tags:
+#        - containers
+#        - management
+#        - homer
+
+    #
+    # Services - Network
+    - role: containers/network/pihole
       tags:
         - containers
-        - homeautomation
-        - zigbee2mqtt
+        - network
+        - pihole
