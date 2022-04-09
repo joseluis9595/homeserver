@@ -1,0 +1,22 @@
+---
+- name: Make sure the Homer container is created and running
+  docker_container:
+    name: "{{ container_name }}"
+    image: "b4bz/homer"
+    pull: true
+    state: 'started'
+    networks:
+      - name: swag_internal_vlan
+    env:
+      "UID": "{{ GUID }}"
+      "GID": "{{ GUID }}"
+      "TZ": "{{ TZ }}"
+#    ports:
+#      - "{{ HOMER_PORT }}:8080"
+    volumes:
+      - "{{ DOCKER_DATA_DIR }}/{{ container_name }}:/www/assets"
+#    labels:
+#      traefik.enable: "true"
+#      traefik.http.routers.homer.rule: "PathPrefix(`/cacola{regex:$$|/.*}`)"
+#      traefik.http.services.homer.loadbalancer.server.port: "8080"
+    restart_policy: unless-stopped

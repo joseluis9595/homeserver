@@ -17,8 +17,10 @@
 #    owner: "{{ USERNAME }}"
 #    group: "{{ USERNAME }}"
 #    mode: 0644
-  with_fileglob:
-    - templates/services/*.conf
+#  with_fileglob:
+#    - templates/services/*.conf
+  with_items:
+    - templates/services/homer.subdomain.conf
   notify:
     - restart swag
     - test nginx

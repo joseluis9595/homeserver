@@ -1,0 +1,16 @@
+---
+- name: Make sure the nginx container is created and running
+  docker_container:
+    name: "nginx"
+    image: "nginx"
+    pull: yes
+    state: 'started'
+    networks:
+      - name: nginx_lan
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - "{{ DOCKER_DATA_DIR }}/nginx/config:/etc/nginx"
+      - "{{ DOCKER_DATA_DIR }}/nginx/certs:/etc/ssl/private"
+    restart_policy: unless-stopped

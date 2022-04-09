@@ -1,0 +1,49 @@
+---
+- name: Create nginx folder structure
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ USERNAME }}"
+    group: "{{ USERNAME }}"
+    mode: 0755
+  become: true
+  with_items:
+    - "{{ DOCKER_DATA_DIR }}/nginx/certs"
+    - "{{ DOCKER_DATA_DIR }}/nginx/config"
+    - "{{ DOCKER_DATA_DIR }}/nginx/config/conf.d/sites-available"
+    - "{{ DOCKER_DATA_DIR }}/nginx/config/conf.d/sites-enabled"
+
+- name: Copy configuration files
+  copy:
+    src: "{{ item }}"
+    dest: "{{ DOCKER_DATA_DIR }}/nginx/config/"
+  with_fileglob:
+    - files/config/*
+
+- name: Apply nginx configuration templates
+  template:
+    src: "{{ item }}"
+    dest: "{{ DOCKER_DATA_DIR }}/nginx/config/{{ item | basename | regex_replace('\.j2$', '') }}"
+  with_fileglob:
+    - templates/config/*.j2
+
+- name: Apply nginx service files (sites-available)
+  template:
+    src: "{{ item }}"
+    dest: "{{ DOCKER_DATA_DIR }}/nginx/config/conf.d/sites-available/{{ item | basename | regex_replace('\.j2$', '') }}"
+  with_fileglob:
+    - templates/services/*.j2
+
+# TODO create symbolic links instead of a full copy of the files
+- name: Apply nginx service files (sites-enabled)
+  template:
+    src: "{{ item }}"
+    dest: "{{ DOCKER_DATA_DIR }}/nginx/config/conf.d/sites-enabled/{{ item | basename | regex_replace('\.j2$', '') }}"
+  with_fileglob:
+    - templates/services/*.j2
+
+#- name: Create symbolic link
+#  file:
+#    src: "{{ SOURCE_FOLDER }}"
+#    dest: "/opt/application/i99/SYMLINK"
+#    state: link

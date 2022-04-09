@@ -15,7 +15,8 @@
       "TZ": "{{ TZ }}"
       "URL": "{{ SWAG_URL }}"
       "SUBDOMAINS": "wildcard"
-      "VALIDATION": "duckdns"
+      "VALIDATION": "http"
+#      "VALIDATION": "duckdns"
       "DUCKDNSTOKEN": "{{ DUCKDNS_TOKEN }}"
     ports:
       - "{{ SWAG_HTTPS_PORT }}:443"
