@@ -1,5 +1,6 @@
 TZ: Europe/Madrid
 USERNAME: "{{ ansible_user }}"
+ADMIN_EMAIL: " {{ VAULT_ADMIN_EMAIL }}"
 SERVER_DOMAIN: "{{ VAULT_SERVER_DOMAIN }}"
 DOCKER_DATA_DIR: "/home/{{ USERNAME }}/homeserver/docker/data"
 GUID: "1000"
@@ -14,8 +15,7 @@ PORTAINER_PASSWD_HASH: "{{ VAULT_PORTAINER_PASSWD_HASH }}"
 DUCKDNS_DOMAIN: "{{ SERVER_DOMAIN }}"
 DUCKDNS_TOKEN: "{{ VAULT_DUCKDNS_TOKEN }}"
 
-#SWAG_URL: "{{ SERVER_DOMAIN }}"
-SWAG_URL: "casitajose.com"
+SWAG_URL: "{{ SERVER_DOMAIN }}"
 
 LAN_NETWORK: "192.168.1.0/24"
 LAN_GATEWAY: "{{ '.'.join(LAN_NETWORK.split('.')[0:3]) }}.1"

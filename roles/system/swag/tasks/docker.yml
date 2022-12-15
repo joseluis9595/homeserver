@@ -17,10 +17,12 @@
       "SUBDOMAINS": "wildcard"
       "VALIDATION": "duckdns"
       "DUCKDNSTOKEN": "{{ DUCKDNS_TOKEN }}"
+      "EMAIL": "{{ ADMIN_EMAIL }}"
     ports:
       - "{{ SWAG_HTTPS_PORT }}:443"
     volumes:
       - "{{ DOCKER_DATA_DIR }}/swag/nginx:/config/nginx"
+      - "{{ DOCKER_DATA_DIR }}/swag/logs:/config/log/nginx"
       - "{{ DOCKER_DATA_DIR }}/swag/dns-conf:/config/dns-conf"
       - "{{ DOCKER_DATA_DIR }}/swag/letsencrypt:/config/etc/letsencrypt"
     restart_policy: unless-stopped

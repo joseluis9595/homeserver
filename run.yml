@@ -24,6 +24,11 @@
 
     #
     # System
+    - role: system/reboot
+      tags:
+        - system
+        - reboot
+
     - role: system/argoncase
       tags:
         - system
@@ -34,23 +39,23 @@
         - system
         - duckdns
 
-#    - role: system/nginx
-#      tags:
-#        - system
-#        - containers
-#        - nginx
-#
-#    - role: system/swag
-#      tags:
-#        - system
-#        - containers
-#        - swag
-#
-#    - role: system/traefik
-#      tags:
-#        - system
-#        - containers
-#        - traefik
+    #    - role: system/nginx
+    #      tags:
+    #        - system
+    #        - containers
+    #        - nginx
+
+    - role: system/swag
+      tags:
+        - system
+        - containers
+        - swag
+
+    #- role: system/traefik
+    #  tags:
+    #    - system
+    #    - containers
+    #    - traefik
 
     - role: system/zsh
       tags:
@@ -70,6 +75,7 @@
         - containers
         - homeautomation
         - mosquitto
+
     # TODO potentially broken
     #    - role: containers/homeautomation/zigbee2mqtt
     #      tags:
@@ -79,16 +85,16 @@
 
     #
     # Services - Management
-#    - role: containers/management/homer
-#      tags:
-#        - containers
-#        - management
-#        - homer
+    #- role: containers/management/homer
+    #  tags:
+    #    - containers
+    #    - management
+    #    - homer
 
     #
     # Services - Network
-    - role: containers/network/pihole
-      tags:
-        - containers
-        - network
-        - pihole
+    #- role: containers/network/pihole
+    #  tags:
+    #    - containers
+    #    - network
+    #    - pihole
