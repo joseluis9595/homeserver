@@ -83,6 +83,15 @@
     #        - homeautomation
     #        - zigbee2mqtt
 
+
+    #
+    # Services - Database
+    - role: containers/database/mariadb
+      tags:
+        - containers
+        - database
+        - mariadb
+
     #
     # Services - Management
     #- role: containers/management/homer

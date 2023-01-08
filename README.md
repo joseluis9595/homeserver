@@ -12,10 +12,15 @@ Ansible project to deploy and configure my local homeserver, with dockerized ser
 
 ## Execution
 
-To execute the ansible playbook on this repo:
-`ansible-playbook run.yml --vault-password-file=.vault_pass --tags="desired_tag"`
-To modify secrets vault
-`EDITOR=nano ansible-vault edit group_vars/all/secrets.yml --vault-password-file=.vault_pass`
+- To execute the ansible playbook on this repo:
+  `ansible-playbook run.yml --vault-password-file=.vault_pass --tags="desired_tag"`
+
+----
+
+## Configuration
+
+- To modify secrets vault
+  `EDITOR=nano ansible-vault edit group_vars/all/secrets.yml --vault-password-file=.vault_pass`
 
 ----
 

@@ -1,3 +1,7 @@
+- name: Set current ip fact
+  set_fact:
+    host_ip: "{{ hostvars[inventory_hostname]['ansible_host'] }}"
+
 - name: Home assistant | Make sure the {{ container_name }} container is created and running
   docker_container:
     name: "{{ container_name }}"
@@ -7,6 +11,7 @@
     state: 'started'
     env:
       "TZ": "{{ TZ }}"
+      "MARIADB_CONNECTION_STRING": "mysql://{{ MARIADB_USER }}:{{ MARIADB_PASSWORD }}@{{ host_ip }}/{{ MARIADB_DATABASE }}?charset=utf8"
     volumes:
       - "{{ DOCKER_DATA_DIR }}/{{ container_name }}/config:/config"
       - /etc/localtime:/etc/localtime:ro
