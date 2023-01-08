@@ -2,7 +2,7 @@
 - name: Reboot daily
   cron:
     name: "Reboot raspberry daily at night"
-    hour: "0"
+    hour: "2"
     minute: "0"
     job: "/sbin/shutdown -r now"
     user: root
