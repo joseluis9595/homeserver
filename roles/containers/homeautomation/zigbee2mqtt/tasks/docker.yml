@@ -1,7 +1,7 @@
 - name: Make sure the {{ container_name }} container is created and running
   docker_container:
     name: "{{ container_name }}"
-    image: "koenkk/zigbee2mqtt"
+    image: "koenkk/zigbee2mqtt:1.29.1"
     pull: yes
     network_mode: host
     state: 'started'
@@ -17,12 +17,12 @@
       "ZIGBEE2MQTT_CONFIG_MQTT_USER": "{{ ZIGBEE2MQTT_CONFIG_USER }}"
       "ZIGBEE2MQTT_CONFIG_MQTT_PASSWORD": "{{ ZIGBEE2MQTT_CONFIG_PASSWORD }}"
 
-- name: Make sure the {{ container_name }} container is created and running
-  docker_container:
-    name: "{{ container_name }}"
-    image: "koenkk/zigbee2mqtt"
-    volumes:
-      -
+#- name: Make sure the {{ container_name }} container is created and running
+#  docker_container:
+#    name: "{{ container_name }}"
+#    image: "koenkk/zigbee2mqtt"
+#    volumes:
+#      -
 #    name: "{{ container_name }}"
 #    image: "koenkk/zigbee2mqtt"
 #    pull: yes

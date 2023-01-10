@@ -77,11 +77,11 @@
         - mosquitto
 
     # TODO potentially broken
-    #    - role: containers/homeautomation/zigbee2mqtt
-    #      tags:
-    #        - containers
-    #        - homeautomation
-    #        - zigbee2mqtt
+    - role: containers/homeautomation/zigbee2mqtt
+      tags:
+        - containers
+        - homeautomation
+        - zigbee2mqtt
 
 
     #
