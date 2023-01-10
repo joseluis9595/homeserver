@@ -1,7 +1,7 @@
 - name: Maria DB | Make sure the {{ container_name }} container is created and running
   docker_container:
     name: "{{ container_name }}"
-    image: "mariadb:latest"
+    image: "mariadb:10.9.4"
     pull: yes
     state: 'started'
     env:
@@ -10,8 +10,8 @@
       "MYSQL_USER": "{{ MARIADB_USER }}"
       "MYSQL_PASSWORD": "{{ MARIADB_PASSWORD }}"
     volumes:
-      - "{{ DOCKER_DATA_DIR }}/{{ container_name }}:/var/lib/mysql"
-      - "{{ DOCKER_DATA_DIR }}/{{ container_name }}:/etc/mysql/conf.d"
+      - "{{ DOCKER_DATA_DIR }}/{{ container_name }}/database:/var/lib/mysql"
+      - "{{ DOCKER_DATA_DIR }}/{{ container_name }}/conf:/etc/mysql/conf.d"
     ports:
       - "3306:3306"
     restart_policy: unless-stopped
