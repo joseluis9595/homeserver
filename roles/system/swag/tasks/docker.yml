@@ -2,7 +2,7 @@
 - name: Make sure the swag container is created and running
   docker_container:
     name: "swag"
-    image: "ghcr.io/linuxserver/swag"
+    image: "linuxserver/swag:1.32.0"
     pull: yes
     networks:
       - name: swag_internal_vlan
