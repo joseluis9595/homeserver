@@ -91,6 +91,12 @@
         - containers
         - database
         - mariadb
+    
+    - role: containers/database/mongodb
+      tags:
+        - containers
+        - database
+        - mongodb
 
     #
     # Services - Management

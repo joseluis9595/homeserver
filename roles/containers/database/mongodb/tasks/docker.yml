@@ -1,0 +1,14 @@
+- name: Mongo DB | Make sure the {{ container_name }} container is created and running
+  docker_container:
+    name: "{{ container_name }}"
+    image: "mongo:4.4.18"
+    pull: yes
+    state: 'started'
+    env:
+      "MONGO_INITDB_ROOT_USERNAME": "root"
+      "MONGO_INITDB_ROOT_PASSWORD": "example"
+    # volumes:
+    #   - "{{ DOCKER_DATA_DIR }}/{{ container_name }}/database:/data/db"
+    ports:
+      - "27017:27017"
+    restart_policy: unless-stopped

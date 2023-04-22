@@ -9,3 +9,5 @@ hosts
 
 # TODO create those files from templates using secrets.yml
 *.passwd
+
+.DS_Store
