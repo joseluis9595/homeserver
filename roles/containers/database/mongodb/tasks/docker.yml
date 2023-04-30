@@ -7,8 +7,8 @@
     env:
       "MONGO_INITDB_ROOT_USERNAME": "root"
       "MONGO_INITDB_ROOT_PASSWORD": "example"
-    # volumes:
-    #   - "{{ DOCKER_DATA_DIR }}/{{ container_name }}/database:/data/db"
+    volumes:
+      - "{{ DOCKER_DATA_DIR }}/{{ container_name }}/database:/data/db"
     ports:
       - "27017:27017"
     restart_policy: unless-stopped
