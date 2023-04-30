@@ -97,6 +97,15 @@
         - containers
         - database
         - mongodb
+    
+
+    #
+    # Servers
+    - role: containers/servers/recipebook-api
+      tags:
+        - containers
+        - servers
+        - recipebook-api
 
     #
     # Services - Management

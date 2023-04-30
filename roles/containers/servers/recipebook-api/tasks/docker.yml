@@ -1,0 +1,14 @@
+- name: recipebook-api | Login to docker hub to pull {{ container_name }} image
+  docker_login:
+    username: "{{ DOCKERHUB_USERNAME }}"
+    password: "{{ DOCKERHUB_PASSWORD }}"
+
+- name: recipebook-api | Make sure the {{ container_name }} container is created and running
+  docker_container:
+    name: "{{ container_name }}"
+    image: "joseluis9595/home-server:recipebook-api"
+    pull: yes
+    state: 'started'
+    ports:
+      - "8090:8090"
+    restart_policy: unless-stopped
