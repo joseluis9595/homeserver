@@ -5,7 +5,7 @@
 - name: Home assistant | Make sure the {{ container_name }} container is created and running
   docker_container:
     name: "{{ container_name }}"
-    image: "homeassistant/home-assistant:2023.5.0"
+    image: "homeassistant/home-assistant:2023.7"
     network_mode: host
     pull: yes
     state: 'started'
