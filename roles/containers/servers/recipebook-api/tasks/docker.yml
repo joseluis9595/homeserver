@@ -9,6 +9,13 @@
     image: "joseluis9595/home-server:recipebook-api"
     pull: yes
     state: 'started'
-    ports:
-      - "8090:8090"
+    network_mode: host
+    env:
+      "PORT": "{{ RECIPEBOOK_API_PORT }}"
+      "LOG_LEVEL": "WARNING"
+      "MONGO_URI": "{{ RECIPEBOOK_MONGO_URI }}"
+      "MONGO_DB": "{{ RECIPEBOOK_MONGO_DB }}"
+      "MONGO_COLLECTION_CART": "{{ RECIPEBOOK_MONGO_COLLECTION_CART }}"
+      "MONGO_COLLECTION_CART_CATEGORY": "{{ RECIPEBOOK_MONGO_COLLECTION_CART_CATEGORY }}"
+      "AUTH_TOKEN": "{{ RECIPEBOOK_AUTH_TOKEN }}"
     restart_policy: unless-stopped
