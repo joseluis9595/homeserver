@@ -11,7 +11,7 @@
     state: 'started'
     env:
       "TZ": "{{ TZ }}"
-      "MARIADB_CONNECTION_STRING": "mysql://{{ MARIADB_USER }}:{{ MARIADB_PASSWORD }}@{{ host_ip }}/{{ MARIADB_DATABASE }}?charset=utf8"
+      "MARIADB_CONNECTION_STRING": "mysql://{{ MARIADB_USER }}:{{ MARIADB_PASSWORD }}@0.0.0.0/{{ MARIADB_DATABASE }}?charset=utf8"
     volumes:
       - "{{ DOCKER_DATA_DIR }}/{{ container_name }}/config:/config"
       - /etc/localtime:/etc/localtime:ro
