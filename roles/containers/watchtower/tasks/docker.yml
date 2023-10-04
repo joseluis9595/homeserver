@@ -1,0 +1,14 @@
+- name: Make sure the {{ container_name }} container is created and running
+  docker_container:
+    name: "{{ container_name }}"
+    image: "containrrr/watchtower"
+    pull: yes
+    state: 'started'
+    env:
+      "WATCHTOWER_POLL_INTERVAL": "60"
+      "REPO_USER": "{{ DOCKERHUB_USERNAME }}"
+      "REPO_PASS": "{{ DOCKERHUB_PASSWORD }}"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart_policy: unless-stopped
+    command: recipebook-api

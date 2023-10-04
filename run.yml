@@ -82,6 +82,13 @@
         - containers
         - homeautomation
         - zigbee2mqtt
+    
+
+    # Watchtower
+    - role: containers/watchtower
+      tags:
+        - containers
+        - watchtower
 
 
     #

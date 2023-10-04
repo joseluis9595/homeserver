@@ -25,4 +25,5 @@
       - "{{ DOCKER_DATA_DIR }}/swag/logs:/config/log/nginx"
       - "{{ DOCKER_DATA_DIR }}/swag/dns-conf:/config/dns-conf"
       - "{{ DOCKER_DATA_DIR }}/swag/letsencrypt:/config/etc/letsencrypt"
+      - "{{ DOCKER_DATA_DIR }}/swag/data:/data"
     restart_policy: unless-stopped

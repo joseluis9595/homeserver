@@ -23,3 +23,25 @@
     - restart swag
     - test nginx
   register: swag_config
+
+- name: Create the data folder
+  become: true
+  file:
+    path: "{{ DOCKER_DATA_DIR }}/swag/data"
+    state: directory
+    recurse: yes
+
+- name: Copy the data/ files
+  become: true
+  copy:
+    src: "{{ item }}"
+    dest: "{{ DOCKER_DATA_DIR }}/swag/data/{{ item | basename | regex_replace('.j2$', '') }}"
+#    owner: "{{ USERNAME }}"
+#    group: "{{ USERNAME }}"
+#    mode: 0644
+  with_fileglob:
+    - files/assetlinks.json
+  notify:
+    - restart swag
+    - test nginx
+  register: swag_config

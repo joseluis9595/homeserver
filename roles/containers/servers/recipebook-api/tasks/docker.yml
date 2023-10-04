@@ -17,5 +17,10 @@
       "MONGO_DB": "{{ RECIPEBOOK_MONGO_DB }}"
       "MONGO_COLLECTION_CART": "{{ RECIPEBOOK_MONGO_COLLECTION_CART }}"
       "MONGO_COLLECTION_CART_CATEGORY": "{{ RECIPEBOOK_MONGO_COLLECTION_CART_CATEGORY }}"
+      "MONGO_COLLECTION_RECIPES": "{{ RECIPEBOOK_MONGO_COLLECTION_RECIPES }}"
       "AUTH_TOKEN": "{{ RECIPEBOOK_AUTH_TOKEN }}"
+      "IMAGES_FOLDER": "/data/uploads"
+      "DEBUG": "True"
+    volumes:
+      - "{{ DOCKER_DATA_DIR }}/{{ container_name }}/uploads:/data/uploads"
     restart_policy: unless-stopped
