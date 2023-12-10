@@ -24,15 +24,20 @@
 
     #
     # System
-    - role: system/reboot
-      tags:
-        - system
-        - reboot
-
     - role: system/argoncase
       tags:
         - system
         - argoncase
+    
+    - role: system/authelia
+      tags:
+        - system
+        - authelia
+
+    - role: system/reboot
+      tags:
+        - system
+        - reboot
 
     - role: system/duckdns
       tags:
