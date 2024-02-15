@@ -1,0 +1,17 @@
+- name: Heimdall | Make sure the {{ container_name }} container is created and running
+  docker_container:
+    name: "{{ container_name }}"
+    image: "lscr.io/linuxserver/heimdall:latest"
+    # network_mode: host
+    pull: yes
+    state: 'started'
+    env:
+      "TZ": "{{ TZ }}"
+      "PUID": "{{ GUID }}"
+      "PGID": "{{ GUID }}"
+    volumes:
+      - "{{ DOCKER_DATA_DIR }}/{{ container_name }}/config:/config"
+    ports:
+      - "{{ HEIMDALL_HTTP_PORT }}:80"
+      - "{{ HEIMDALL_HTTPS_PORT }}:443"
+    restart_policy: unless-stopped

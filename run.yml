@@ -67,6 +67,14 @@
         - system
         - zsh
 
+    # 
+    # Management
+    - role: containers/management/heimdall
+      tags:
+        - containers
+        - management
+        - heimdall
+
     #
     # Services - Home automation
     - role: containers/homeautomation/homeassistant
@@ -118,14 +126,6 @@
         - containers
         - servers
         - recipebook-api
-
-    #
-    # Services - Management
-    #- role: containers/management/homer
-    #  tags:
-    #    - containers
-    #    - management
-    #    - homer
 
     #
     # Services - Network
