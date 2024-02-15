@@ -6,6 +6,7 @@
     pull: yes
     networks:
       - name: swag_internal_vlan
+        ipv4_address: "172.19.0.2"
     capabilities:
       - net_admin
     state: 'started'

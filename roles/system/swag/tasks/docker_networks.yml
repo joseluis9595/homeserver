@@ -3,3 +3,7 @@
   docker_network:
     name: swag_internal_vlan
     state: present
+    driver: bridge
+    ipam_config:
+      - subnet: "172.19.0.0/16"  
+        gateway: "172.19.0.1"    

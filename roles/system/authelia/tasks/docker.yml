@@ -6,6 +6,7 @@
     state: 'started'
     networks:
       - name: swag_internal_vlan
+        ipv4_address: "172.19.0.3"
     network_mode: bridge
     # env:
     #   "MYSQL_ROOT_PASSWORD": "{{ MARIADB_ROOT_PASSWORD }}"
